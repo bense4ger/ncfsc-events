@@ -3,6 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo ${CODEBUILD_SRC_DIR}
+      - mkdir -p ${CODEBUILD_SRC_DIR}/bin
       - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
       - cd ${CODEBUILD_SRC_DIR}; dep ensure
   build:
@@ -12,7 +14,7 @@ phases:
       - zip ncfsc-events.zip ncfsc-events
   post_build:
     commands:
-      - aws cloudformation package --template-file template.json --output-template-file serverless.json --s3-bucket codepipeline-us-east-1-904718901445
+      - aws cloudformation package --template-file template.json --output-template-file serverless.json --s3-bucket ${BUILD_OUTPUT_BUCKET}
 artifacts:
   files:
     - serverless.json
