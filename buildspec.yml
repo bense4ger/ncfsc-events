@@ -3,7 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - go get github.com/aws/aws-lambda-go/lambda
+      - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+      - cd ${CODEBUILD_SRC_DIR}; dep ensure
   build:
     commands:
       - go test ./...
