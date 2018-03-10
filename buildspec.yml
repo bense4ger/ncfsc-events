@@ -11,7 +11,7 @@ phases:
       - zip ncfsc-events.zip ncfsc-events
    post_build:
      commands:
-      - aws cloudformation package --template-file template.json --output-template-file serverless.json --s3-bucket $BUILD_OUTPUT_BUCKET
+      - aws cloudformation package --template-file template.json --output-template-file serverless.json --s3-bucket codepipeline-us-east-1-904718901445
  artifacts:
    files:
      - serverless.json
