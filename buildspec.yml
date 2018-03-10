@@ -3,8 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo ${CODEBUILD_SRC_DIR}
-      - mkdir -p ${CODEBUILD_SRC_DIR}/bin
+      - cd ${CODEBUILD_SRC_DIR}; cd ..; mkdir /bin
       - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
       - cd ${CODEBUILD_SRC_DIR}; dep ensure
   build:
