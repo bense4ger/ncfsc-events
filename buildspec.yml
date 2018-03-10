@@ -3,7 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
-      - go get ./...
+      - go get "github.com/aws/aws-lambda-go/events"
+	    - go get "github.com/aws/aws-lambda-go/lambda"
   build:
     commands:
       - go test ./...
