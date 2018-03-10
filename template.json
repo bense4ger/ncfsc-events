@@ -1,0 +1,41 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Transform": "AWS::Serverless-2016-10-31",
+    "Resources": {
+        "EventFetchFunction" : {
+            "Type": "AWS::Serverless::Function",
+            "Properties":{
+                "Handler": "get-event",
+                "Runtime": "go1.x",
+                "CodeUri": "./",
+                "Policies": "AmazonDynamoDBReadOnlyAccess",
+                "Events": {
+                    "GetEventApi": {
+                        "Type": "Api",
+                        "Properties": {
+                            "Path": "/",
+                            "Method": "GET"
+                        }
+                    }
+                }
+            }
+        },
+        "EventTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+                "AttributeDefinitions" : [
+                    { "AttributeName": "Id", "AttributeType": "S" },
+                    { "AttributeName": "DateTime", "AttributeType": "S" }
+                ],
+                "KeySchema": [
+                    { "AttributeName": "Id", "KeyType": "HASH" },
+                    { "AttributeName": "DateTime", "KeyType": "RANGE" }
+                ],
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": 1,
+                    "WriteCapacityUnits": 1
+                }
+            }
+        }
+    }
+}
