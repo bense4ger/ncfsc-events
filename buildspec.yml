@@ -3,8 +3,6 @@ version: 0.2
 phases:
   install:
     commands:
-      - go install -i github.com/golang/dep/cmd/dep
-      - cd ${CODEBUILD_SRC_DIR}; dep ensure
   build:
     commands:
       - go test ./...
