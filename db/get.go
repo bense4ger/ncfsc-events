@@ -59,22 +59,13 @@ func (c *Client) GetEventByID(id string) (*model.Event, error) {
 func (c *Client) GetEvents() (*[]model.Event, error) {
 	//So this uses a scan.  Not brilliant with a large data set
 	//For this though, we're fine
-	proj := createProjection()
-	builder := expression.NewBuilder().WithProjection(proj)
-	exp, err := builder.Build()
-
-	if err != nil {
-		return nil, fmt.Errorf("GetNextEvent error building expresion: %s", err.Error())
-	}
-
 	si := &dynamodb.ScanInput{
-		ProjectionExpression: exp.Projection(),
-		TableName:            aws.String(c.tableName),
+		TableName: aws.String(c.tableName),
 	}
 
 	result, err := c.client.Scan(si)
 	if err != nil {
-		return nil, fmt.Errorf("GetNextEvent error scanning db: %s", err.Error())
+		return nil, fmt.Errorf("GetEvents error scanning db: %s", err.Error())
 	}
 
 	evts := make([]model.Event, *result.Count)

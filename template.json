@@ -5,9 +5,9 @@
         "EventFetchFunction" : {
             "Type": "AWS::Serverless::Function",
             "Properties":{
-                "Handler": "get-event",
+                "Handler": "ncfsc-events",
                 "Runtime": "go1.x",
-                "CodeUri": "./",
+                "CodeUri": "s3://code-drops/ncfsc-events.zip",
                 "Policies": "AmazonDynamoDBReadOnlyAccess",
                 "Events": {
                     "GetEventApi": {
