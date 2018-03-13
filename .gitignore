@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+/vendor
 
 # Test binary, build with `go test -c`
 *.test
@@ -21,3 +22,6 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+
+ncfsc-events
+ncfsc-events.exe

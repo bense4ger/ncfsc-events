@@ -24,12 +24,10 @@
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "AttributeDefinitions" : [
-                    { "AttributeName": "Id", "AttributeType": "S" },
-                    { "AttributeName": "DateTime", "AttributeType": "S" }
+                    { "AttributeName": "id", "AttributeType": "S" }
                 ],
                 "KeySchema": [
-                    { "AttributeName": "Id", "KeyType": "HASH" },
-                    { "AttributeName": "DateTime", "KeyType": "RANGE" }
+                    { "AttributeName": "id", "KeyType": "HASH" }
                 ],
                 "ProvisionedThroughput": {
                     "ReadCapacityUnits": 1,
