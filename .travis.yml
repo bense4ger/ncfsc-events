@@ -13,6 +13,9 @@ install:
   - dep ensure
 script:
   - go test -race ./...
+  - go build -o ncfsc-events
+after_success:
+  - zip ncfsc-events.zip ncfsc-events
 env:
   global:
   - secure: AlPwnbFECKBPepby+eg+FtHDXw55v9wWXwwh/ttmxGjcqOkNhDc/H6k+EAPFeA0ZQF591I0aoU/9uHWHPXCiHdnXddheaH4zMY0f2Gjb7Q7yyh8c6Mv4tWfAWDQMF/BlQVZpP/veR2BoFzAtO2jtjGHXrPJJgnUxxd9QtPyioWxZMeAp1jSwm5hxt+z8Or9QM/Li+1H+PpnuhPaO4XXCbEEOm+w6DFKyZ8oIJBxwLbWwhVt4hYXmjh/5XqeZ1WHtlFdhESwL67P5O+bZLJTiMA3ETcAukbZ+VJqQkAs2R18wI1s5LmscS0ntqKqj3jEs4dISHCcbEsVVg0C3lFj8Fl/Hh7TZNH4KJAG2D50pNjIZvMYYnQzATGLrnWs3uoyUQPGGniyasuvoLJuBNtO5VeMCsjNvTr40bMbR0v33TdavfOG0W4C3XSnL4VEQ6ctlcPT7Nf/53DPHx1jHBtKcsgruPZcLFFuZ2+elXJr73SQk05WlKyEFIf7Bj+gRK64My0//3LHLebrnLIBsbT47bLGIUk4eRKXALMxTNwQKitAig1C+wJOUfOUNJWoWHYSVt5uUseC1eyv4RVH4OExS258hcydvmsKThsio6BVVThP+2bbcd5arcmh2EeGrGtMFG0TYtMkmzj7NKt9gCDfifyQb/3wvUjpIXA7pbcqJTj0=
