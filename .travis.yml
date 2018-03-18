@@ -2,6 +2,7 @@ language: go
 go:
   - '1.10'
 before_install:
+  - export STACK_NAME="ncfsc-events"
   - sudo apt-get install jq
   - chmod +x gen_aws_creds.sh
   - ./gen_aws_creds.sh
