@@ -9,6 +9,7 @@
                 "Runtime": "go1.x",
                 "CodeUri": "s3://code-drops/ncfsc-events.zip",
                 "Policies": "AmazonDynamoDBReadOnlyAccess",
+                "FunctionName": "ncfsc-events-fetch-event",
                 "Events": {
                     "GetEventApi": {
                         "Type": "Api",
@@ -23,6 +24,7 @@
         "EventTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
+                "TableName": "ncfsc-events-table",
                 "AttributeDefinitions" : [
                     { "AttributeName": "id", "AttributeType": "S" }
                 ],

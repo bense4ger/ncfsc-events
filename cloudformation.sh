@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 DATE=`date '+%Y%m%d%H%M%S'`
 
-stackId=$(aws cloudformation describe-stacks --region $EC2_REGION --stack-name $STACK_NAME | jq '.Stacks[0].StackId')
+stackId=$(aws cloudformation describe-stacks --region us-east-1 --stack-name $STACK_NAME | jq '.Stacks[0].StackId')
 stackId=$(sed -e 's/^"//' -e 's/"$//' <<<"$stackId")
 
 if [ "$stackId" = "null" ]
