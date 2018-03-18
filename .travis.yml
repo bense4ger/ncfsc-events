@@ -2,6 +2,7 @@ language: go
 go:
   - '1.10'
 before_install:
+  - chmod +x gen_aws_creds.sh
   - ./gen_aws_creds.sh
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
