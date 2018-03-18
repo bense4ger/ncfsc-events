@@ -9,18 +9,21 @@ before_install:
   - ./awscli-bundle/install -b ~/bin/aws
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
+  - mkdir dist
 install:
   - dep ensure
 script:
   - go test -race ./...
   - go build -o ncfsc-events
 after_success:
-  - zip ncfsc-events.zip ncfsc-events
+  - zip dist/ncfsc-events.zip ncfsc-events
 deploy:
+  skip_cleanup: true
   provider: s3
   access_key_id: ${AWS_ACCESS_KEY_ID}
   secret_access_key: ${AWS_SECRET_ACCESS_KEY}
   bucket: "code-drops"
+  local-dir: dist/*
   acl: private
   on:
     branch: release
