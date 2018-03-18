@@ -4,6 +4,9 @@ go:
 before_install:
   - chmod +x gen_aws_creds.sh
   - ./gen_aws_creds.sh
+  - curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+  - unzip awscli-bundle.zip
+  - ./awscli-bundle/install -b ~/bin/aws
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
 install:
